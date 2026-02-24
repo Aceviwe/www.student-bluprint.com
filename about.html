@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | Student Blueprint</title>
 
+  <link rel="icon" href="stu-bluprint.jpeg" type="image/jpeg" />
+
   <!-- SEO -->
   <meta name="description" content="Learn about Student Blueprint, a platform dedicated to smarter student life, academics, and personal growth." />
   <meta name="author" content="Student Blueprint" />
@@ -13,6 +15,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XC3PECVQ8K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XC3PECVQ8K');
+  </script>
 
   <style>
     :root {
@@ -29,6 +41,12 @@
       color: var(--text);
       line-height: 1.7;
       background: white;
+    }
+
+    img {
+      width: 90px;
+      height: 90px;
+      float: left;
     }
 
     header {
@@ -92,39 +110,45 @@
 </head>
 <body>
 
-<header>
-  <nav>
-    <strong>Student Blueprint</strong>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="blog.html">Blog</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
+  <img src="stu-bluprint.jpeg" alt="Student Blueprint Logo" />
+
+  <header>
+    <nav>
+      <strong>Student Blueprint</strong>
+      <div>
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
   </nav>
-</header>
 
-<main>
-  <h1>About Student Blueprint</h1>
+  </header>
 
-  <p>Student Blueprint was created to help students navigate academic life with clarity, discipline, and confidence.</p>
+  <main>
+    <h1>About Student Blueprint</h1>
 
-  <p>Many students struggle not because they lack intelligence, but because they lack structure, guidance, and practical systems. This platform focuses on providing realistic strategies for studying, managing time, balancing social life, and preparing for life beyond graduation.</p>
+    <p><cite>Student Blueprint was created to help students navigate academic life </cite>.</p>
 
-  <p>Student Blueprint is built as an informational resource — not a motivational hype site. The goal is to provide content that students can apply immediately to improve their academic performance and overall well-being.</p>
+    <p>Many students struggle not because they lack intelligence, but because they lack structure, guidance, and practical systems. This platform focuses on providing realistic strategies for studying, managing time, balancing social life, and preparing for life beyond graduation.</p>
 
-  <p>Whether you are in high school, college, or university, Student Blueprint exists to help you think long-term while performing well in the present.</p>
-</main>
+    <p>Student Blueprint is built as an informational resource — not a motivational hype site. The goal is to provide content that students can apply immediately to improve their academic performance and overall well-being.</p>
 
-<footer>
-  <div>
-    <span>© 2025 Student Blueprint</span>
+    <p>Whether you are in high school, college, or university, Student Blueprint exists to help you think long-term while performing well in the present.</p>
+  </main>
+
+  <footer>
     <div>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms</a>
+      <span>©<span id="year"></span> ~Student Blueprint~</span>
+      <div>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>

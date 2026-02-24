@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | Student Blueprint</title>
 
+  <link rel="icon" href="stu-bluprint.jpeg" type="image/jpeg" />
+
   <!-- SEO -->
   <meta name="description" content="Contact Student Blueprint for questions, feedback, or collaboration inquiries." />
   <meta name="author" content="Student Blueprint" />
@@ -13,6 +15,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XC3PECVQ8K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XC3PECVQ8K');
+  </script>
 
   <style>
     :root {
@@ -29,6 +41,12 @@
       color: var(--text);
       line-height: 1.7;
       background: white;
+    }
+
+    img {
+      width: 90px;
+      height: 90px;
+      float: left;
     }
 
     header {
@@ -49,6 +67,7 @@
       color: var(--text);
       margin-left: 1rem;
       font-weight: 500;
+      justify-content: space-evenly;
     }
 
     main {
@@ -124,7 +143,7 @@
   </style>
 </head>
 <body>
-
+<img src="stu-bluprint.jpeg" alt="Student Blueprint Logo" />
 <header>
   <nav>
     <strong>Student Blueprint</strong>
@@ -141,19 +160,27 @@
   <h1>Contact</h1>
   <p>Have a question, suggestion, or collaboration idea? Send a message below.</p>
 
-  <form id="contactForm">
-    <input type="text" id="name" placeholder="Your name" required />
-    <input type="email" id="email" placeholder="Your email" required />
-    <textarea id="message" placeholder="Your message" required></textarea>
+  <form id="contactForm" action="https://formspree.io/f/yourFormId" method="POST">
+    <input type="text" id="name" name="name" placeholder="Your name" required />
+    <input type="email" id="email" name="email" placeholder="Your email" required />
+    <textarea id="message" name="message" placeholder="Your message" required></textarea>
+    <input type="hidden" name="_subject" value="New contact message from website">
     <button type="submit">Send Message</button>
   </form>
 
   <div class="status" id="status"></div>
+
 </main>
+
+<div class="contacts">
+  <p>You can also find us on:</p>
+  <p>Facebook <strong>:</strong> <a href="https://www.facebook.com/studentsbp">@student blueprint</a></p>
+  <p>whatsApp <strong>:</strong> <a href="https://wa.me/27736641720"> +27 736 641 720</a></p>
+</div>
 
 <footer>
   <div>
-    <span>© <span id="year"></span> Student Blueprint</span>
+    <span>© <span id="year"></span> ~Student Blueprint~</span>
     <div>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms</a>
@@ -161,13 +188,47 @@
   </div>
 </footer>
 
-<script>
+  <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
+  // Formspree endpoint - replace "yourFormId" with your real Formspree form ID
+  const formEndpoint = 'https://formspree.io/f/yourFormId';
+
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    document.getElementById('status').textContent = 'Message sent successfully. We will respond if required.';
-    this.reset();
+    const form = e.currentTarget;
+    const statusEl = document.getElementById('status');
+    statusEl.textContent = 'Sending...';
+
+    const formData = new FormData(form);
+    try {
+      const resp = await fetch(formEndpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      });
+
+      if (resp.ok) {
+        statusEl.textContent = 'Message sent — thank you!';
+        form.reset();
+      } else {
+        statusEl.textContent = 'Sending failed. Opening email client as fallback.';
+        const name = formData.get('name') || '';
+        const email = formData.get('email') || '';
+        const message = formData.get('message') || '';
+        const subject = encodeURIComponent(`Contact from ${name || 'website visitor'}`);
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+        window.location.href = `mailto:studentbluprint@gmail.com?subject=${subject}&body=${body}`;
+      }
+    } catch (err) {
+      statusEl.textContent = 'Network error. Opening email client as fallback.';
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const subject = encodeURIComponent(`Contact from ${name || 'website visitor'}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+      window.location.href = `mailto:studentbluprint@gmail.com?subject=${subject}&body=${body}`;
+    }
   });
 </script>
 

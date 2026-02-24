@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Student Life & Study Guides | Student Blueprint Blog</title>
 
+  <link rel="icon" href="stu-bluprint.jpeg" type="image/jpeg" />
+
   <!-- SEO -->
   <meta name="description" content="Read practical articles on student life, discipline, productivity, exams, and personal development." />
   <meta name="author" content="Student Blueprint" />
@@ -13,6 +15,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XC3PECVQ8K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XC3PECVQ8K');
+  </script>
 
   <style>
     :root {
@@ -29,6 +41,12 @@
       color: var(--text);
       line-height: 1.7;
       background: white;
+    }
+
+    img {
+      width: 90px;
+      height: 90px;
+      float: left;
     }
 
     header {
@@ -91,6 +109,14 @@
       font-weight: 600;
     }
 
+    .block {
+      margin-top: 5rem;
+      display:block;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
     footer {
       border-top: 1px solid var(--border);
       padding: 2rem 1rem;
@@ -115,6 +141,8 @@
   </style>
 </head>
 <body>
+
+  <img src="stu-bluprint.jpeg" alt="Student Blueprint Logo" />
 
 <header>
   <nav>
@@ -174,17 +202,32 @@
       <a href="article-5.html">Read Article →</a>
     </div>
   </div>
+  <h1></h1>
+
+  <h1>Student Life</h1>
+
+  <div class="grid">
+    <div class="block">
+      <h2>Share Your Experience as a Student</h2>
+      <p>You can share your experience as student
+        We would be honoured if you can work with us in molding, shaping our future country's hope.</p>
+    </div>
+  </div>
 </main>
 
 <footer>
   <div>
-    <span>© 2025 Student Blueprint</span>
+    <span>©<span id="year"></span> ~Student Blueprint~</span>
     <div>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms</a>
     </div>
   </div>
 </footer>
+
+<script>
+   document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Student Blueprint | Practical Guides for Student Success</title>
 
+  <link rel="icon" href="stu-bluprint.jpeg" type="image/jpeg" />
+
   <!-- SEO -->
   <meta name="description" content="Student Blueprint provides practical guides on student life, discipline, time management, study techniques, and personal growth." />
   <meta name="author" content="Student Blueprint" />
@@ -18,6 +20,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XC3PECVQ8K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XC3PECVQ8K');
+  </script>
 
   <style>
     :root {
@@ -35,6 +47,12 @@
       color: var(--text);
       line-height: 1.7;
       background: white;
+    }
+
+    img {
+      width: 90px;
+      height: 90px;
+      float: left;
     }
 
     header {
@@ -147,6 +165,8 @@
 </head>
 <body>
 
+  <img src="stu-bluprint.jpeg" alt="Student Blueprint Logo" />
+
 <header>
   <nav>
     <strong>Student Blueprint</strong>
@@ -205,13 +225,16 @@
 
 <footer>
   <div>
-    <span>© 2025 Student Blueprint</span>
+    <span>©<span id="year"></span> ~Student Blueprint~</span>
     <div>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms</a>
     </div>
   </div>
 </footer>
+<script>
+   document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
